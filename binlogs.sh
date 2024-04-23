@@ -11,12 +11,12 @@ else
 fi
 
 # Setting Bin log variables based on database name
-$DATABASE=$1
-$BINLOGSTARTPOS='grep "MASTER_LOG_POS=" $DATABASE | awk -F\= {'print $3'} | rev |cut -c1|rev'
-$BINLOGPREFIX='grep "MASTER_LOG_FILE=" $DATABASE | awk -F'= {'print $2'}|awk -F \. {'print $1'}'
-$BINLOGSTARTFILE='grep "MASTER_LOG_FILE=" $DATABASE | awk -F'= {'print $2'}|awk -F \. {'print $2'}'
-$BINLOGSECONDFILE=(($BINLOGSTARTFILE+1))
-$BINLOGENDFILE='ls -t $BINLOGPREFIX* |tail -n1 | awk -F'= {'print $2'}|awk -F \. {'print $2'}'
+DATABASE=$1
+BINLOGSTARTPOS='grep "MASTER_LOG_POS=" $DATABASE | awk -F\= {'print $3'} | rev |cut -c1|rev'
+BINLOGPREFIX='grep "MASTER_LOG_FILE=" $DATABASE | awk -F'= {'print $2'}|awk -F \. {'print $1'}'
+BINLOGSTARTFILE='grep "MASTER_LOG_FILE=" $DATABASE | awk -F'= {'print $2'}|awk -F \. {'print $2'}'
+BINLOGSECONDFILE=(($BINLOGSTARTFILE+1))
+BINLOGENDFILE='ls -t $BINLOGPREFIX* |tail -n1 | awk -F'= {'print $2'}|awk -F \. {'print $2'}'
 
 #Displaying output message
 echo "Replaying bin logs and removing use statements"
