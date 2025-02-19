@@ -14,8 +14,7 @@ elif [[ $1 == "nginx" ]]; then
 		echo "Creating bad bots conf file"
 		touch /etc/nginx/badbots.conf
 		echo -e "#ANS Serverwide bad bot block
-		if (\$http_user_agent ~* 360Spider|RSurf15a|SSurf15a|VadixBot|gptbot|WeSee|ahrefs|amazonbot|ascribebot|baidu|Bytespider|blexbot|claudebot|dotbot|fatbot|genieo|grapeshot|haosouspider|ia_archiver|lexxebot|megaindex\.ru|mixrankbot|MJ12bot|moatbot|nutch|orangebot|paperlibot|petalbot|semrush|showyoubot|sogou|spider|tineye|vagabondo|xovibot|yandexbot|yelpspider|yoozbotAspiegelBot|aspiegel|AhrefsBot|MJ12|Bytedance|fidget-spinner-bot|EmailCollector|WebEMailExtrac|seocompany|LieBaoFast|SEOkicks|Uptimebot|Cliqzbot|ssearch_bot|domaincrawler|spot|DigExt|Sogou||majestic12|80legs|SISTRIX|HTTrack|Ezooms|CCBot
-) 
+		if (\$http_user_agent ~* AspiegelBot|aspiegel|PetalBot|baidu|ahrefs|semrush|xovibot|360Spider|dotbot|genieo|megaindex\.ru|vagabondo|yandexbot|yelpspider|fatbot|tineye|blexbot|ascribebot|ia_archiver|moatbot|mixrankbot|orangebot|yoozbot|mj12bot|paperlibot|showyoubot|grapeshot|WeSee|haosouspider|spider|lexxebot|nutch) 
 {
         return 403;
   }" > /etc/nginx/badbots.conf
@@ -51,44 +50,67 @@ elif [[ $1 == "apache" ]]; then
 		echo "Creating bad bots conf file"
 		touch /etc/apache2/conf-enabled/zz011_bad_bots.conf
 		echo -e "<Directory "/var/www/vhosts">
-SetEnvIfNoCase User-Agent "360Spider" bad_bots
-SetEnvIfNoCase User-Agent "RSurf15a" bad_bots
-SetEnvIfNoCase User-Agent "SSurf15a" bad_bots
-SetEnvIfNoCase User-Agent "VadixBot" bad_bots
-SetEnvIfNoCase User-Agent "gptbot" bad_bots
-SetEnvIfNoCase User-Agent "WeSee" bad_bots
-SetEnvIfNoCase User-Agent "ahrefs" bad_bots
-SetEnvIfNoCase User-Agent "amazonbot" bad_bots
-SetEnvIfNoCase User-Agent "ascribebot" bad_bots
-SetEnvIfNoCase User-Agent "baidu" bad_bots
-SetEnvIfNoCase User-Agent "Bytespider" bad_bots
-SetEnvIfNoCase User-Agent "blexbot" bad_bots
-SetEnvIfNoCase User-Agent "claudebot" bad_bots
-SetEnvIfNoCase User-Agent "dotbot" bad_bots
-SetEnvIfNoCase User-Agent "fatbot" bad_bots
-SetEnvIfNoCase User-Agent "genieo" bad_bots
-SetEnvIfNoCase User-Agent "grapeshot" bad_bots
-SetEnvIfNoCase User-Agent "haosouspider" bad_bots
-SetEnvIfNoCase User-Agent "ia_archiver" bad_bots
-SetEnvIfNoCase User-Agent "lexxebot" bad_bots
-SetEnvIfNoCase User-Agent "megaindex\.ru" bad_bots
-SetEnvIfNoCase User-Agent "mixrankbot" bad_bots
-SetEnvIfNoCase User-Agent "MJ12bot" bad_bots
-SetEnvIfNoCase User-Agent "moatbot" bad_bots
-SetEnvIfNoCase User-Agent "nutch" bad_bots
-SetEnvIfNoCase User-Agent "orangebot" bad_bots
-SetEnvIfNoCase User-Agent "paperlibot" bad_bots
-SetEnvIfNoCase User-Agent "petalbot" bad_bots
-SetEnvIfNoCase User-Agent "semrush" bad_bots
-SetEnvIfNoCase User-Agent "showyoubot" bad_bots
-SetEnvIfNoCase User-Agent "sogou" bad_bots
-SetEnvIfNoCase User-Agent "spider" bad_bots
-SetEnvIfNoCase User-Agent "tineye" bad_bots
-SetEnvIfNoCase User-Agent "vagabondo" bad_bots
-SetEnvIfNoCase User-Agent "xovibot" bad_bots
-SetEnvIfNoCase User-Agent "yandexbot" bad_bots
-SetEnvIfNoCase User-Agent "yelpspider" bad_bots
-SetEnvIfNoCase User-Agent "yoozbot" bad_bots
+SetEnvIfNoCase User-Agent "360Spider" bad_bots 
+SetEnvIfNoCase User-Agent "RSurf15a" bad_bots 
+SetEnvIfNoCase User-Agent "SSurf15a" bad_bots 
+SetEnvIfNoCase User-Agent "VadixBot" bad_bots 
+SetEnvIfNoCase User-Agent "gptbot" bad_bots 
+SetEnvIfNoCase User-Agent "WeSee" bad_bots 
+SetEnvIfNoCase User-Agent "ahrefs" bad_bots 
+SetEnvIfNoCase User-Agent "amazonbot" bad_bots 
+SetEnvIfNoCase User-Agent "ascribebot" bad_bots 
+SetEnvIfNoCase User-Agent "baidu" bad_bots 
+SetEnvIfNoCase User-Agent "Bytespider" bad_bots 
+SetEnvIfNoCase User-Agent "blexbot" bad_bots 
+SetEnvIfNoCase User-Agent "claudebot" bad_bots 
+SetEnvIfNoCase User-Agent "dotbot" bad_bots 
+SetEnvIfNoCase User-Agent "fatbot" bad_bots 
+SetEnvIfNoCase User-Agent "genieo" bad_bots 
+SetEnvIfNoCase User-Agent "grapeshot" bad_bots 
+SetEnvIfNoCase User-Agent "haosouspider" bad_bots 
+SetEnvIfNoCase User-Agent "ia_archiver" bad_bots 
+SetEnvIfNoCase User-Agent "lexxebot" bad_bots 
+SetEnvIfNoCase User-Agent "megaindex\.ru" bad_bots 
+SetEnvIfNoCase User-Agent "mixrankbot" bad_bots 
+SetEnvIfNoCase User-Agent "MJ12bot" bad_bots 
+SetEnvIfNoCase User-Agent "moatbot" bad_bots 
+SetEnvIfNoCase User-Agent "nutch" bad_bots 
+SetEnvIfNoCase User-Agent "orangebot" bad_bots 
+SetEnvIfNoCase User-Agent "paperlibot" bad_bots 
+SetEnvIfNoCase User-Agent "petalbot" bad_bots 
+SetEnvIfNoCase User-Agent "semrush" bad_bots 
+SetEnvIfNoCase User-Agent "showyoubot" bad_bots 
+SetEnvIfNoCase User-Agent "sogou" bad_bots 
+SetEnvIfNoCase User-Agent "spider" bad_bots 
+SetEnvIfNoCase User-Agent "tineye" bad_bots 
+SetEnvIfNoCase User-Agent "vagabondo" bad_bots 
+SetEnvIfNoCase User-Agent "xovibot" bad_bots 
+SetEnvIfNoCase User-Agent "yandexbot" bad_bots 
+SetEnvIfNoCase User-Agent "yelpspider" bad_bots 
+SetEnvIfNoCase User-Agent "yoozbotAspiegelBot" bad_bots 
+SetEnvIfNoCase User-Agent "aspiegel" bad_bots 
+SetEnvIfNoCase User-Agent "AhrefsBot" bad_bots 
+SetEnvIfNoCase User-Agent "MJ12" bad_bots 
+SetEnvIfNoCase User-Agent "Bytedance" bad_bots 
+SetEnvIfNoCase User-Agent "fidget-spinner-bot" bad_bots 
+SetEnvIfNoCase User-Agent "EmailCollector" bad_bots 
+SetEnvIfNoCase User-Agent "WebEMailExtrac" bad_bots 
+SetEnvIfNoCase User-Agent "seocompany" bad_bots 
+SetEnvIfNoCase User-Agent "LieBaoFast" bad_bots 
+SetEnvIfNoCase User-Agent "SEOkicks" bad_bots 
+SetEnvIfNoCase User-Agent "Uptimebot" bad_bots 
+SetEnvIfNoCase User-Agent "Cliqzbot" bad_bots 
+SetEnvIfNoCase User-Agent "ssearch_bot" bad_bots 
+SetEnvIfNoCase User-Agent "domaincrawler" bad_bots 
+SetEnvIfNoCase User-Agent "spot" bad_bots 
+SetEnvIfNoCase User-Agent "DigExt" bad_bots 
+SetEnvIfNoCase User-Agent "Sogou" bad_bots 
+SetEnvIfNoCase User-Agent "majestic12" bad_bots 
+SetEnvIfNoCase User-Agent "80legs" bad_bots 
+SetEnvIfNoCase User-Agent "SISTRIX" bad_bots 
+SetEnvIfNoCase User-Agent "HTTrack" bad_bots 
+SetEnvIfNoCase User-Agent "Ezooms" bad_bots 
+SetEnvIfNoCase User-Agent "CCBot" bad_bots
 <RequireAll>
 Require all granted
 Require not env bad_bots
