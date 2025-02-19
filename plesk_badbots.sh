@@ -14,7 +14,7 @@ elif [[ $1 == "nginx" ]]; then
 		echo "Creating bad bots conf file"
 		touch /etc/nginx/badbots.conf
 		echo -e "#ANS Serverwide bad bot block
-		if (\$http_user_agent ~* 360Spider|RSurf15a|SSurf15a|VadixBot|gptbot|WeSee|ahrefs|amazonbot|ascribebot|baidu|Bytespider|blexbot|claudebot|dotbot|fatbot|genieo|grapeshot|haosouspider|ia_archiver|lexxebot|megaindex\.ru|mixrankbot|MJ12bot|moatbot|nutch|orangebot|paperlibot|petalbot|semrush|showyoubot|sogou|spider|tineye|vagabondo|xovibot|yandexbot|yelpspider|yoozbotAspiegelBot|aspiegel|AhrefsBot|MJ12|Bytedance|fidget-spinner-bot|EmailCollector|WebEMailExtrac|sogou music spider|seocompany|LieBaoFast|SEOkicks|Uptimebot|Cliqzbot|ssearch_bot|domaincrawler|spot|DigExt|Sogou||majestic12|80legs|SISTRIX|HTTrack|Ezooms|CCBot
+		if (\$http_user_agent ~* 360Spider|RSurf15a|SSurf15a|VadixBot|gptbot|WeSee|ahrefs|amazonbot|ascribebot|baidu|Bytespider|blexbot|claudebot|dotbot|fatbot|genieo|grapeshot|haosouspider|ia_archiver|lexxebot|megaindex\.ru|mixrankbot|MJ12bot|moatbot|nutch|orangebot|paperlibot|petalbot|semrush|showyoubot|sogou|spider|tineye|vagabondo|xovibot|yandexbot|yelpspider|yoozbotAspiegelBot|aspiegel|AhrefsBot|MJ12|Bytedance|fidget-spinner-bot|EmailCollector|WebEMailExtrac|seocompany|LieBaoFast|SEOkicks|Uptimebot|Cliqzbot|ssearch_bot|domaincrawler|spot|DigExt|Sogou||majestic12|80legs|SISTRIX|HTTrack|Ezooms|CCBot
 ) 
 {
         return 403;
