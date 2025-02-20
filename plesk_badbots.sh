@@ -1,3 +1,18 @@
+\\#!/bin/bash
+\\      echo "Checking webservice"
+\\    IP=$(hostname --ip-address)
+\\  WEBSERVICE=$(curl -skIL https://$IP |grep -i "server:" | awk {'print $2'})
+\\        echo "Webservice is "$WEBSERVICE
+\\        sleep 1
+\\        echo "Checking for panel"
+\\        if [ ! -f /sbin/plesk ] && [ -f /usr/local/cpanel/cpanel ]; then
+\\                echo "Server is running cPanel"
+\\        elif [ -f /sbin/plesk ] && [ ! -f /usr/local/cpanel/cpanel ]; then
+\\                echo "Server is running Plesk"
+\\        else
+\\                echo "Server is nor running a panel, stopping."
+\\        fi
+\\        exit 0
 #!/bin/bash
 #Setting Help text block
 if [[ $1 == "-h" || $1 == "--help" ]]; then
